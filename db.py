@@ -45,7 +45,7 @@ def getListOfBalanceSources():
         list_of_source.append(i["name"])
     return list_of_source
 
-getListOfBalanceSources()
+
 
 def refillCardOperation():
     pass
