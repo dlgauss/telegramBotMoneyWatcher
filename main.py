@@ -29,9 +29,9 @@ async def send_welcome(message: types.Message):
 async def echo(message: types.Message):
     # old style:
     # await bot.send_message(message.chat.id, message.text)
-    parseText(message.text)
+    s = parseText(message.text)
 
-    await message.answer(message.text)
+    await message.answer(s)
 
 
 if __name__ == '__main__':
