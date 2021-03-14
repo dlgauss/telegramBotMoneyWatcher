@@ -84,3 +84,23 @@ def updateBalance(source_balance):
 
 def insertOutcameOP(outcameData):
     collection_opeartions.insert_one(outcameData)
+
+
+def import_balance_from_db():
+    balance = collection_balance.find()
+    list_of_sources = []
+    for i in balance:
+        list_of_sources.append({
+            "name":i["name"],
+            "sum":i["SUM"]
+        })
+
+    return list_of_sources
+    # micb_balance = {
+    #     "name":
+    # }
+    # mobias_balance =
+    # up_moldova balance =
+    # cash_balance =
+
+
