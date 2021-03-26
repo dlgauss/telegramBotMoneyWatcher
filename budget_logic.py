@@ -5,8 +5,8 @@ from db import import_balance_from_db
 def parseText(text):
     newStr = text.split(' ')
     operation =  newStr[0]
-    variable = 'Salary'
-    if len(newStr[0]) > 1 and newStr[0] != variable.lower():
+
+    if len(newStr[0]) > 1 and newStr[0] != 'salary':
         if len(newStr) == 3:
             symbl = re.split('(\d+)', newStr[0])
 

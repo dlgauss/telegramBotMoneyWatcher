@@ -13,14 +13,12 @@ db = cluster["currencies"]
 collection_balance = db["balance"]
 collection_opeartions = db["moneywatcher"]
 
-date_today = date.today()
-str_date = date_today.strftime("%d-%m-%Y")
-time_now1 = datetime.now()
-time_now = time_now1.strftime("%H:%M:%S")
+
 
 
 
 def getCurrentState(source,dest):
+
     source_op = collection_balance.find_one({"name":source})
     dest_op = collection_balance.find_one({"name":dest})
 
@@ -60,7 +58,10 @@ def insertNewOperation():
     pass
 
 def insertOneRefill(source_name,dest_name,result_for_source,result_for_destination):
-
+    date_today = date.today()
+    str_date = date_today.strftime("%d-%m-%Y")
+    time_now1 = datetime.now()
+    time_now = time_now1.strftime("%H:%M:%S")
     query_source = {"name":source_name}
     value_source = {"$set":{"SUM":result_for_source,"LAST TIME UPDATED":time_now,"LAST DATE UPDATED":str_date}}
     query_dest = {"name":dest_name}
@@ -77,6 +78,10 @@ def getCurrentSourceBalance(name):
 
 
 def updateBalance(source_balance):
+    date_today = date.today()
+    str_date = date_today.strftime("%d-%m-%Y")
+    time_now1 = datetime.now()
+    time_now = time_now1.strftime("%H:%M:%S")
     query_source = {"name": source_balance["name"]}
     value_source = {"$set":{"SUM":source_balance["SUM"],"LAST TIME UPDATED":time_now,"LAST DATE UPDATED":str_date}}
     collection_balance.update_one(query_source,value_source)
@@ -96,11 +101,5 @@ def import_balance_from_db():
         })
 
     return list_of_sources
-    # micb_balance = {
-    #     "name":
-    # }
-    # mobias_balance =
-    # up_moldova balance =
-    # cash_balance =
 
 
